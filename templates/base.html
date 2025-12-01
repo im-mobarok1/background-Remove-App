@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>{% block title %}BG Remove Pro - Professional Background Removal{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel=\"icon\" type=\"image/x-icon\" href=\"/static/images/favicon.ico\">
+    
+    <!-- CSS -->
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css\">
+    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap\">
+    <link rel=\"stylesheet\" href=\"/static/css/style.css\">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name=\"description\" content=\"Professional background removal tool. Remove backgrounds from images instantly with AI technology.\">
+    <meta name=\"keywords\" content=\"background removal, remove bg, image editing, photo editing, AI background remover\">
+    <meta name=\"author\" content=\"BG Remove Pro\">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class=\"navbar\">
+        <div class=\"container\">
+            <div class=\"nav-content\">
+                <a href=\"/\" class=\"logo\">
+                    <i class=\"fas fa-magic\"></i>
+                    <span>BG<span class=\"logo-highlight\">Remove</span>Pro</span>
+                </a>
+                
+                <div class=\"nav-menu\">
+                    <a href=\"/\" class=\"nav-link {% if request.path == '/' %}active{% endif %}\">
+                        <i class=\"fas fa-home\"></i> Home
+                    </a>
+                    <a href=\"/bg-remove/\" class=\"nav-link {% if 'bg-remove' in request.path %}active{% endif %}\">
+                        <i class=\"fas fa-wand-magic-sparkles\"></i> Remove BG
+                    </a>
+                    <a href=\"#features\" class=\"nav-link\">
+                        <i class=\"fas fa-star\"></i> Features
+                    </a>
+                    <a href=\"#pricing\" class=\"nav-link\">
+                        <i class=\"fas fa-tag\"></i> Pricing
+                    </a>
+                    <a href=\"#contact\" class=\"nav-link\">
+                        <i class=\"fas fa-envelope\"></i> Contact
+                    </a>
+                </div>
+                
+                <div class=\"nav-actions\">
+                    <a href=\"#login\" class=\"btn btn-outline\">
+                        <i class=\"fas fa-sign-in-alt\"></i> Login
+                    </a>
+                    <a href=\"/bg-remove/\" class=\"btn btn-primary\">
+                        <i class=\"fas fa-user-plus\"></i> Try Free
+                    </a>
+                </div>
+                
+                <button class=\"mobile-menu-btn\">
+                    <i class=\"fas fa-bars\"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class=\"mobile-menu\">
+        <div class=\"mobile-menu-content\">
+            <a href=\"/\" class=\"mobile-nav-link\">
+                <i class=\"fas fa-home\"></i> Home
+            </a>
+            <a href=\"/bg-remove/\" class=\"mobile-nav-link\">
+                <i class=\"fas fa-wand-magic-sparkles\"></i> Remove BG
+            </a>
+            <a href=\"#features\" class=\"mobile-nav-link\">
+                <i class=\"fas fa-star\"></i> Features
+            </a>
+            <a href=\"#pricing\" class=\"mobile-nav-link\">
+                <i class=\"fas fa-tag\"></i> Pricing
+            </a>
+            <a href=\"#contact\" class=\"mobile-nav-link\">
+                <i class=\"fas fa-envelope\"></i> Contact
+            </a>
+            <div class=\"mobile-menu-actions\">
+                <a href=\"#login\" class=\"btn btn-outline btn-block\">
+                    <i class=\"fas fa-sign-in-alt\"></i> Login
+                </a>
+                <a href=\"/bg-remove/\" class=\"btn btn-primary btn-block\">
+                    <i class=\"fas fa-user-plus\"></i> Try Free
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class=\"footer\">
+        <div class=\"container\">
+            <div class=\"footer-grid\">
+                <div class=\"footer-col\">
+                    <h3 class=\"footer-logo\">
+                        <i class=\"fas fa-magic\"></i>
+                        BG<span class=\"logo-highlight\">Remove</span>Pro
+                    </h3>
+                    <p class=\"footer-description\">
+                        Professional background removal service using advanced AI technology.
+                        Fast, accurate, and easy to use.
+                    </p>
+                    <div class=\"social-links\">
+                        <a href=\"#\" class=\"social-link\"><i class=\"fab fa-twitter\"></i></a>
+                        <a href=\"#\" class=\"social-link\"><i class=\"fab fa-facebook\"></i></a>
+                        <a href=\"#\" class=\"social-link\"><i class=\"fab fa-instagram\"></i></a>
+                        <a href=\"#\" class=\"social-link\"><i class=\"fab fa-linkedin\"></i></a>
+                    </div>
+                </div>
+                
+                <div class=\"footer-col\">
+                    <h4 class=\"footer-title\">Product</h4>
+                    <a href=\"/bg-remove/\" class=\"footer-link\">Background Removal</a>
+                    <a href=\"#\" class=\"footer-link\">Batch Processing</a>
+                    <a href=\"#\" class=\"footer-link\">API Access</a>
+                    <a href=\"#\" class=\"footer-link\">Plugins & Extensions</a>
+                </div>
+                
+                <div class=\"footer-col\">
+                    <h4 class=\"footer-title\">Company</h4>
+                    <a href=\"#\" class=\"footer-link\">About Us</a>
+                    <a href=\"#\" class=\"footer-link\">Careers</a>
+                    <a href=\"#\" class=\"footer-link\">Blog</a>
+                    <a href=\"#\" class=\"footer-link\">Press</a>
+                </div>
+                
+                <div class=\"footer-col\">
+                    <h4 class=\"footer-title\">Support</h4>
+                    <a href=\"#\" class=\"footer-link\">Help Center</a>
+                    <a href=\"#\" class=\"footer-link\">Tutorials</a>
+                    <a href=\"#\" class=\"footer-link\">Contact Us</a>
+                    <a href=\"#\" class=\"footer-link\">System Status</a>
+                </div>
+                
+                <div class=\"footer-col\">
+                    <h4 class=\"footer-title\">Legal</h4>
+                    <a href=\"#\" class=\"footer-link\">Privacy Policy</a>
+                    <a href=\"#\" class=\"footer-link\">Terms of Service</a>
+                    <a href=\"#\" class=\"footer-link\">Cookie Policy</a>
+                    <a href=\"#\" class=\"footer-link\">GDPR Compliance</a>
+                </div>
+            </div>
+            
+            <div class=\"footer-bottom\">
+                <p>&copy; 2024 BG Remove Pro. All rights reserved.</p>
+                <div class=\"footer-bottom-links\">
+                    <a href=\"#\">Sitemap</a>
+                    <span class=\"separator\">•</span>
+                    <a href=\"#\">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src=\"/static/js/main.js\"></script>
+    {% block extra_js %}{% endblock %}
+    
+    <!-- CSRF Token for AJAX -->
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
+</body>
+</html>

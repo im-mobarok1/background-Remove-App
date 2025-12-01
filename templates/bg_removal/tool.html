@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+
+{% block title %}Remove Background - BG Remove Pro{% endblock %}
+
+{% block content %}
+<!-- Tool Header -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Professional Background Remover</h1>
+            <p>Upload your image and let our AI remove the background instantly</p>
+        </div>
+    </div>
+</section>
+
+<!-- Upload Section -->
+<section class="upload-section">
+    <div class="container">
+        <div class="upload-container">
+            <div class="upload-card">
+                <div class="upload-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Your Image</h2>
+                    <p>Drag & drop or click to select an image (Max 10MB)</p>
+                </div>
+                
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drop your image here</h3>
+                    <p>or click to browse files</p>
+                    <button class="btn btn-primary" id="uploadBtn">
+                        <i class="fas fa-folder-open"></i> Select Image
+                    </button>
+                    <input type="file" id="fileInput" class="file-input" accept=".png,.jpg,.jpeg,.webp">
+                </div>
+                
+                <div id="fileInfo" class="file-info hidden">
+                    <div class="file-info-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <div class="file-details">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                    <button class="remove-file" id="removeFile">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="supported-formats">
+                    <p><strong>Supported formats:</strong> PNG, JPEG, JPG, WEBP | <strong>Max size:</strong> 10MB</p>
+                </div>
+                
+                <div class="terms-notice">
+                    <p>By uploading an image, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. Images are automatically deleted after processing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Processing Section -->
+<section class="processing-section" id="processingSection">
+    <div class="container">
+        <div class="processing-content">
+            <div class="processing-spinner">
+                <i class="fas fa-spinner"></i>
+            </div>
+            <h2>Removing Background...</h2>
+            <p>Our AI is processing your image. This usually takes 3-5 seconds.</p>
+            
+            <div class="processing-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Preview Section -->
+<section class="preview-section" id="previewSection">
+    <div class="container">
+        <div class="preview-container">
+            <!-- Original Image -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3><i class="fas fa-image"></i> Original Image</h3>
+                </div>
+                <div class="preview-image" id="originalPreview">
+                    <div class="image-placeholder">
+                        <i class="fas fa-image"></i>
+                    </div>
+                </div>
+                <div class="preview-actions">
+                    <button class="btn btn-secondary" id="viewOriginal">
+                        <i class="fas fa-expand"></i> View Full Size
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Processed Image -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <h3><i class="fas fa-magic"></i> Background Removed</h3>
+                </div>
+                <div class="preview-image" id="processedPreview">
+                    <div class="image-placeholder">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                </div>
+                <div class="preview-actions">
+                    <a href="#" class="btn btn-success" id="downloadBtn" download>
+                        <i class="fas fa-download"></i> Download PNG
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="processAnother">
+                <i class="fas fa-plus"></i> Process Another Image
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Perfect for Every Use Case</h2>
+            <p class="section-subtitle">From e-commerce to personal projects, our tool handles it all</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-commerce</h3>
+                <p>Create professional product images with clean white backgrounds for your online store.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-portrait"></i>
+                </div>
+                <h3>Portrait Photos</h3>
+                <p>Remove backgrounds from portraits for professional headshots and profile pictures.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Graphic Design</h3>
+                <p>Extract objects for use in designs, mockups, and creative projects.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Upload Section Styles */
+    .upload-section {
+        padding: 4rem 0;
+        background: var(--white);
+    }
+    
+    .upload-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .upload-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        overflow: hidden;
+        border: 1px solid var(--gray-300);
+    }
+    
+    .upload-header {
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 1px solid var(--gray-300);
+        background: linear-gradient(135deg, var(--gray-200), var(--white));
+    }
+    
+    .upload-box {
+        padding: 3rem 2rem;
+        text-align: center;
+        border: 3px dashed var(--gray-400);
+        border-radius: var(--radius-md);
+        background: var(--gray-100);
+        margin: 2rem;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+    
+    .upload-box:hover,
+    .upload-box.dragover {
+        border-color: var(--primary-color);
+        background: rgba(99, 102, 241, 0.05);
+    }
+    
+    .file-input {
+        display: none;
+    }
+    
+    .file-info {
+        margin: 0 2rem 1rem;
+        padding: 1rem;
+        background: var(--gray-200);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        display: none;
+    }
+    
+    .file-info-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .file-details {
+        flex: 1;
+    }
+    
+    .file-name {
+        font-weight: 600;
+        color: var(--gray-900);
+    }
+    
+    .file-size {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+    
+    .remove-file {
+        background: none;
+        border: none;
+        color: var(--gray-600);
+        cursor: pointer;
+        padding: 0.25rem;
+    }
+    
+    .remove-file:hover {
+        color: var(--danger-color);
+    }
+    
+    .supported-formats {
+        padding: 1rem 2rem;
+        text-align: center;
+        background: var(--gray-100);
+        border-top: 1px solid var(--gray-300);
+    }
+    
+    .supported-formats p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+    
+    .terms-notice {
+        padding: 1.5rem 2rem;
+        text-align: center;
+        background: var(--gray-50);
+        border-top: 1px solid var(--gray-300);
+    }
+    
+    .terms-notice p {
+        margin: 0;
+        font-size: 0.75rem;
+        color: var(--gray-600);
+    }
+    
+    .terms-notice a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+    
+    /* Processing Section */
+    .processing-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        display: none;
+    }
+    
+    .processing-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .processing-spinner {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        animation: spin 2s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .processing-progress {
+        width: 100%;
+        height: 8px;
+        background: var(--gray-300);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        margin: 2rem 0;
+    }
+    
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        border-radius: var(--radius-full);
+        width: 0%;
+        transition: width 1s ease;
+    }
+    
+    /* Preview Section */
+    .preview-section {
+        padding: 4rem 0;
+        display: none;
+    }
+    
+    .preview-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    .preview-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        border: 1px solid var(--gray-300);
+    }
+    
+    .preview-header {
+        padding: 1.5rem;
+        background: var(--gray-100);
+        border-bottom: 1px solid var(--gray-300);
+        text-align: center;
+    }
+    
+    .preview-header h3 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .preview-image {
+        padding: 2rem;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gray-100);
+    }
+    
+    .preview-image img {
+        max-width: 100%;
+        max-height: 350px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+    
+    .image-placeholder {
+        color: var(--gray-400);
+        font-size: 6rem;
+    }
+    
+    .preview-actions {
+        padding: 1.5rem;
+        text-align: center;
+        border-top: 1px solid var(--gray-300);
+        background: var(--gray-100);
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/tool.js"></script>
+{% endblock %}
